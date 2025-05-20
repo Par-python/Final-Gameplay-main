@@ -1,3 +1,23 @@
+/**
+ * The GameCanvas class manages the main game interface and component transitions.
+ * It handles the flow between different game screens including kingdom selection, engine selection, and ready screen.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -18,6 +38,9 @@ public class GameCanvas extends JComponent {
     private ReadyScreen readyScreen;
     private boolean onReady;
 
+    /**
+     * Initializes the game canvas with all necessary components and audio.
+     */
     public GameCanvas() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         setPreferredSize(new Dimension(1024, 768));
         setLayout(null);
@@ -39,6 +62,9 @@ public class GameCanvas extends JComponent {
         readyScreen = new ReadyScreen(chooseKingdom);  
     }
 
+    /**
+     * Starts the game by initializing the intro screen and setting up component transitions.
+     */
     public void start() {
         clip1.start();
         add(introBackground);
@@ -160,6 +186,11 @@ public class GameCanvas extends JComponent {
     clip1.close();
     }
 
+    /**
+     * Checks if the game is ready to start.
+     * 
+     * @return true if the game is ready to start
+     */
     public boolean setOnReady(){
         return onReady;
     }

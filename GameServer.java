@@ -1,4 +1,22 @@
-
+/**
+ * The GameServer class manages the multiplayer game server functionality.
+ * It handles client connections, player synchronization, and game state management.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
 import java.io.*;
 import java.net.*;
 
@@ -19,6 +37,9 @@ public class GameServer {
     //x and y cords
     private double p1x, p1y, p2x, p2y;
 
+    /**
+     * Initializes the game server with default settings and player positions.
+     */
     public GameServer(){
         System.out.println("=== GAME SERVER ===");
         numPlayers = 0;
@@ -37,6 +58,9 @@ public class GameServer {
         }
     }
 
+    /**
+     * Accepts and manages client connections, setting up communication channels.
+     */
     public void acceptConnections(){
         try{
             System.out.println("Waiting for connections...");
@@ -86,17 +110,31 @@ public class GameServer {
         }
     }
 
+    /**
+     * The ReadFromClient class manages reading player position data from connected clients.
+     * It updates the server's game state based on received player positions.
+     */
     private class ReadFromClient implements Runnable {
 
         private int playerID;
         private DataInputStream dataIn;
 
+        /**
+         * Initializes the ReadFromClient with player ID and input stream.
+         * 
+         * @param pid the player ID (1 or 2)
+         * @param in the DataInputStream for reading player data
+         */
         public ReadFromClient(int pid, DataInputStream in){
             playerID = pid;
             dataIn = in;
             System.out.println("RFC" + playerID + "Runnable created");
         }
 
+        /**
+         * Continuously reads player position data from the client.
+         * Updates the server's game state with received positions.
+         */
         public void run(){
             try {
 
@@ -113,17 +151,31 @@ public class GameServer {
         }
     }
 
+    /**
+     * The WriteToClient class manages sending game state updates to connected clients.
+     * It handles the synchronization of player positions between clients.
+     */
     private class WriteToClient implements Runnable {
 
         private int playerID;
         private DataOutputStream dataOut;
 
+        /**
+         * Initializes the WriteToClient with player ID and output stream.
+         * 
+         * @param pid the player ID (1 or 2)
+         * @param out the DataOutputStream for sending player data
+         */
         public WriteToClient(int pid, DataOutputStream out){
             playerID = pid;
             dataOut = out;
             System.out.println("WTC" + playerID + "Runnable created");
         }
 
+        /**
+         * Continuously sends opponent position data to the client.
+         * Maintains a consistent update rate for smooth gameplay.
+         */
         public void run(){
             try{
 
@@ -147,6 +199,9 @@ public class GameServer {
             }
         }
 
+        /**
+         * Sends the start message to the client when both players are connected.
+         */
         public void sendStartMsg(){
             try {
                 dataOut.writeUTF("We now have 2 players.");

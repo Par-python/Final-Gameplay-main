@@ -1,3 +1,22 @@
+    /**
+     * The GameFrame class manages the main game window and gameplay mechanics.
+     * It handles player input, game state, networking, and rendering of all game components.
+     * 
+     * @author Lance Arnel G. Camacho (245288)
+     * @author Jerome John C. Pardo (246268)
+     * @version 20 May 2025
+     * 
+     * I have not discussed the Java language code in my program
+     * with anyone other than my instructor or the teaching assistants
+     * assigned to this course.
+     * 
+     * I have not used Java language code obtained from another student,
+     * or any other unauthorized source, either modified or unmodified.
+     * If any Java language code or documentation used in my program
+     * was obtained from another source, such as a textbook or website,
+     * that has been clearly noted with a proper citation in the comments
+     * of my program.
+     */
     import java.awt.*;
     import java.awt.event.*;
 
@@ -9,6 +28,7 @@
     import java.io.*;
     import java.net.*;
 
+    
     public class GameFrame extends JFrame {
 
         // gameplay(Local)
@@ -51,6 +71,12 @@
         private ReadFromServer rfsRunnable;
         private WriteToServer wtsRunnable;
 
+        /**
+         * Initializes the game frame with specified dimensions and game components.
+         * 
+         * @param w the width of the game window
+         * @param h the height of the game window
+         */
         public GameFrame(int w, int h) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
             width = w;
             height = h;
@@ -80,6 +106,9 @@
             enemy = new PlayerSprite(100, 500, 50, Color.RED, "Strawberry");
         }
 
+        /**
+         * Sets up the game's graphical user interface and initializes the game canvas.
+         */
         public void setUpGUI() {
         contentPane = this.getContentPane();
         this.setTitle("Candy Racers Player: " + playerID);
@@ -117,6 +146,9 @@
     }
 
 
+        /**
+         * Creates player sprites based on the player ID and kingdom selection.
+         */
         private void createSprites() {
             if (playerID == 1) {
                 me = new PlayerSprite(100, 350, 50, Color.BLUE, "Blueberry");
@@ -289,7 +321,17 @@
             }
         }
 
+        /**
+         * The DrawingComponent class handles the rendering of all game elements and manages the camera view.
+         * It coordinates the drawing of background elements, sprites, and UI components in the correct order.
+         */
         private class DrawingComponent extends JComponent {
+            /**
+             * Renders all game elements including background, sprites, and UI components.
+             * Manages parallax scrolling effects and camera positioning.
+             * 
+             * @param g the Graphics context used for rendering
+             */
             protected void paintComponent(Graphics g) {
 
                 Graphics2D g2d = (Graphics2D) g.create();
@@ -348,15 +390,27 @@
             }
         }
 
+        /**
+         * The ReadFromServer class manages the client-side network communication for receiving game state updates.
+         * It handles reading enemy player position data from the server in a separate thread.
+         */
         private class ReadFromServer implements Runnable {
-
             private DataInputStream dataIn;
 
+            /**
+             * Initializes the ReadFromServer with the server's input stream.
+             * 
+             * @param in the DataInputStream connected to the server
+             */
             public ReadFromServer(DataInputStream in) {
                 dataIn = in;
                 System.out.println("RFS Runnable Created");
             }
 
+            /**
+             * Continuously reads enemy position data from the server.
+             * Updates the enemy sprite position based on received data.
+             */
             public void run() {
                 try {
 
@@ -370,6 +424,10 @@
                 }
             }
 
+            /**
+             * Waits for the start message from the server and initializes the game threads.
+             * Sets up the read and write threads for network communication.
+             */
             public void waitForStartMsg() {
                 playerhasJoined = true;
 
@@ -387,15 +445,27 @@
             }
         }
 
+        /**
+         * The WriteToServer class manages the client-side network communication for sending game state updates.
+         * It handles sending the local player's position data to the server in a separate thread.
+         */
         private class WriteToServer implements Runnable {
-
             private DataOutputStream dataOut;
 
+            /**
+             * Initializes the WriteToServer with the server's output stream.
+             * 
+             * @param out the DataOutputStream connected to the server
+             */
             public WriteToServer(DataOutputStream out) {
                 dataOut = out;
                 System.out.println("WTS Runnable Created");
             }
 
+            /**
+             * Continuously sends local player position data to the server.
+             * Maintains a consistent update rate for smooth network communication.
+             */
             public void run() {
                 try {
 

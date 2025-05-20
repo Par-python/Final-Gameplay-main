@@ -1,22 +1,21 @@
 /**
-    The Brakes class represents the brake selection screen,
-    handling user input, hover effects, and sound playback. It passes 
-    values to the GameCanvas for car selection.
-
-    @author Lance Arnel G. Camacho (245288)
-    @author Jerome John C. Pardo (246268)
-    @version 20 May 2025
-
-    I have not discussed the Java language code in my program
-    with anyone other than my instructor or the teaching assistants
-    assigned to this course.
-
-    I have not used Java language code obtained from another student,
-    or any other unauthorized source, either modified or unmodified.
-    If any Java language code or documentation used in my program
-    was obtained from another source, such as a textbook or website,
-    that has been clearly noted with a proper citation in the comments
-    of my program.
+ * The Brakes class manages the brake selection interface for the game, providing visual feedback and sound effects for user interactions.
+ * It handles the selection between Candy, Stripe, and Magic brake types, with hover effects and click responses.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
 **/
 
 import java.awt.*;
@@ -52,9 +51,8 @@ public class Brakes extends JComponent {
     private final Rectangle hoverArea4 = new Rectangle(53, 51, 65, 65);      // Exit
 
     /**
-      Constructor that initializes images, sounds, hover zones,
-      and mouse event listeners for the brakes selection screen.
-    **/
+     * Initializes the brake selection screen with images, sounds, and mouse listeners.
+     */
     public Brakes() {
         defaultImage = new ImageIcon("./assets/brakes.png").getImage();
         hoverImage1 = new ImageIcon("./assets/candy.png").getImage();
@@ -184,50 +182,62 @@ public class Brakes extends JComponent {
     }
 
     /**
-      @return true if Candy brakes were picked.
-    **/
+     * Checks if the Candy brakes option has been selected.
+     * 
+     * @return true if Candy brakes were picked
+     */
     public boolean isCandyPicked(){
         return candyPicked;
     }
 
     /**
-      @return true if Stripe brakes were picked.
-    **/
+     * Checks if the Stripe brakes option has been selected.
+     * 
+     * @return true if Stripe brakes were picked
+     */
     public boolean isStripePicked(){
         return stripePicked;
     }
 
     /**
-      @return true if Magic brakes were picked.
-    **/
+     * Checks if the Magic brakes option has been selected.
+     * 
+     * @return true if Magic brakes were picked
+     */
     public boolean isMagicPicked(){
         return magicPicked;
     }
 
     /**
-      @return true if the back button was clicked.
-    **/
+     * Checks if the back button has been clicked.
+     * 
+     * @return true if the back button was clicked
+     */
     public boolean isBackPicked(){
         return backPicked;
     }
 
     /**
-      @return the currently selected brake type.
-    **/
+     * Returns the currently selected brake type.
+     * 
+     * @return the currently selected brake type
+     */
     public String getType() {
         return selectedBrakeType;
     }
 
     /**
-      @param x the boolean value to set backPicked to.
-    **/
+     * Updates the back button selection state.
+     * 
+     * @param x the boolean value to set backPicked to
+     */
     public void changebackPicked(boolean x){
         backPicked = x;
     }
 
     /**
-      Resets the brake selection and image.
-    **/
+     * Resets the brake selection state to default values.
+     */
     public void nullify(){
         candyPicked = false;
         stripePicked = false;
@@ -236,15 +246,17 @@ public class Brakes extends JComponent {
     }
 
     /**
-      @param x the brake type to set as selected.
-    **/
+     * Updates the currently selected brake type.
+     * 
+     * @param x the brake type to set as selected
+     */
     public void changeBrake(String x){
         selectedBrakeType = x;
     }
 
     /**
-      Plays the 'choose brakes' sound once.
-    **/
+     * Plays the brake selection sound effect once.
+     */
     public void playSound(){
         if (clip5 != null){
             clip5.setFramePosition(0);
@@ -254,8 +266,8 @@ public class Brakes extends JComponent {
     }
 
     /**
-      Draws the image onto the screen.
-    **/
+     * Renders the current brake selection screen image.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

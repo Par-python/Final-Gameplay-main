@@ -1,3 +1,22 @@
+/**
+ * The Engine class manages the engine selection interface for the game, providing visual feedback and sound effects for user interactions.
+ * It handles the selection between Shortcake, Overload, and Matcha engine cores, with hover effects and click responses.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -34,6 +53,9 @@ public class Engine extends JComponent {
     
 
 
+    /**
+     * Initializes the engine selection screen with images, sounds, and mouse listeners.
+     */
     public Engine() {
         defaultImage = new ImageIcon("./assets/Engine.png").getImage();
         hoverImage1 = new ImageIcon("./assets/shortcake.png").getImage();
@@ -167,25 +189,53 @@ public class Engine extends JComponent {
         });
     }
 
+    /**
+     * Checks if the Shortcake Core has been selected.
+     * 
+     * @return true if Shortcake Core was picked
+     */
     public boolean isShortcakePicked(){
         return shortcakePicked;
     }
 
+    /**
+     * Checks if the Overload Core has been selected.
+     * 
+     * @return true if Overload Core was picked
+     */
     public boolean isChocoPicked(){
         return chocoPicked;
     }
 
+    /**
+     * Checks if the Matcha Core has been selected.
+     * 
+     * @return true if Matcha Core was picked
+     */
     public boolean isMatchaPicked(){
         return matchaPicked;
     }
+    /**
+     * Returns the currently selected engine type.
+     * 
+     * @return the currently selected engine type
+     */
     public String getEngineType() {
         return pickedEngineType;
     }
 
+    /**
+     * Updates the currently selected engine type.
+     * 
+     * @param x the engine type to set as selected
+     */
     public void changeEngine(String x){
         pickedEngineType = x;
     }
 
+    /**
+     * Resets the engine selection state to default values.
+     */
     public void nullify(){
         pickedEngineType = null;
         shortcakePicked = false;
@@ -194,6 +244,9 @@ public class Engine extends JComponent {
         currentImage = defaultImage;
     }
 
+    /**
+     * Plays the engine selection sound effect once.
+     */
     public void playSound(){
        if (clip5!=null){
            clip5.setFramePosition(0);
@@ -202,6 +255,9 @@ public class Engine extends JComponent {
        }
    }
 
+    /**
+     * Renders the current engine selection screen image.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

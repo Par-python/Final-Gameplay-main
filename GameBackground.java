@@ -1,3 +1,22 @@
+/**
+ * The GameBackground class manages the scrolling background images for the game.
+ * It handles the continuous rendering of multiple background segments to create an infinite scrolling effect.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
 import java.awt.*;
 import javax.swing.*;
 
@@ -8,6 +27,9 @@ public class GameBackground extends JComponent{
     private Image gameBackground4;
     private Image gameBackground5;
 
+    /**
+     * Initializes the game background with multiple background images.
+     */
     public GameBackground() {
         ImageIcon img1 = new ImageIcon("./assets/gameBackground.png");
         ImageIcon img2 = new ImageIcon("./assets/gameBackground2.png");
@@ -22,7 +44,9 @@ public class GameBackground extends JComponent{
         setBounds(0, 0, 4096, 768);
     }
 
-    
+    /**
+     * Renders the scrolling background images in sequence.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
