@@ -149,7 +149,7 @@ public class GameCanvas extends JComponent {
         if (readyScreen.isBlueBerryReady() || readyScreen.isStrawberryReady()) {
             remove(readyScreen);
             repaint();
-            if (onReady != null) onReady.run(); // <- 🔥 callback to GameFrame
+            if (onReady != null) onReady.run(); 
         }
     }
 });

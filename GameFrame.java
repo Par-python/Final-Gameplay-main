@@ -218,11 +218,8 @@ public class GameFrame extends JFrame {
 
     private void setUpKeyListener() {
         KeyListener kl = new KeyListener() {
-
             @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
+            public void keyTyped(KeyEvent e) { }
 
             @Override
             public void keyPressed(KeyEvent e) {
@@ -264,8 +261,11 @@ public class GameFrame extends JFrame {
                 }
             }
         };
-        contentPane.addKeyListener(kl);
-        contentPane.setFocusable(true);
+
+        // Attach listener to the drawing component (game view)
+        dc.addKeyListener(kl);
+        dc.setFocusable(true);
+        dc.requestFocusInWindow();  // Ensure it gets focus!
     }
 
     public void connectToServer() {
