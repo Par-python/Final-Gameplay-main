@@ -9,14 +9,18 @@ public class GameCanvas extends JComponent {
     private Clip clip1;
 
     private Kingdom chooseKingdom;
-    private ArrayList<JComponent> elements;
     private IntroBackground introBackground;
     private Engine chooseEngine;
     private Wheels wheels;
     private Brakes brakes;
     private Addon addon;
     private ReadyScreen readyScreen;
+
+    //getting parts
     private boolean onReady;
+    private String enginePass;
+    private String brakePass;
+    private boolean addOnPass;
 
     public GameCanvas() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         setPreferredSize(new Dimension(1024, 768));
@@ -33,6 +37,10 @@ public class GameCanvas extends JComponent {
         wheels = new Wheels();
         brakes = new Brakes();
         addon = new Addon();
+
+        enginePass = "ShortCake Core";
+        brakePass = "Stripes Core";
+        addOnPass = true;
 
         onReady = false;
 
@@ -153,11 +161,26 @@ public class GameCanvas extends JComponent {
             remove(readyScreen);
             repaint();
             onReady = true;
+            enginePass = chooseEngine.getEngineType();
+            brakePass = brakes.getType();
+            addOnPass = addon.isAddonPicked();
         }
     }
-});
+    });
 
     clip1.close();
+    }
+
+    public String getChosenEngine(){
+        return enginePass;
+    }
+
+    public String getChosenBrakes(){
+        return brakePass;
+    }
+
+    public boolean getChosenAddOn(){
+        return addOnPass;
     }
 
     public boolean setOnReady(){

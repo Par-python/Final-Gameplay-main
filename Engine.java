@@ -7,7 +7,7 @@ import javax.swing.*;
 public class Engine extends JComponent {
     // Constants for types
     public static final String SHORTCAKE = "Shortcake Core";
-    public static final String CHOCO = "Overload Core";
+    public static final String CHOCO = "ChocolocateOverload Core";
     public static final String MATCHA = "Matcha Core";
 
     private Image defaultImage;
@@ -181,7 +181,6 @@ public class Engine extends JComponent {
     public String getEngineType() {
         return pickedEngineType;
     }
-
     public void changeEngine(String x){
         pickedEngineType = x;
     }

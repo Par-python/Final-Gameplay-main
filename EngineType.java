@@ -165,6 +165,10 @@ public class EngineType {
         return speed;
     }
 
+    public void setType(String s){
+        engineType = s;
+    }
+
     public String getEngineType(){
         return engineType;
     }

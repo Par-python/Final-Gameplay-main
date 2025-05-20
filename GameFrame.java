@@ -40,11 +40,9 @@
         private Obstacle obstacle2;
         private Obstacle obstacle3;
         private Obstacle obstacle4;
-        private Obstacle obstacle5;
-        private Obstacle obstacle6;
-        private Obstacle obstacle7;
         private Kingdom kingdom;
         private GameCanvas gc;
+        
         // for server
         private Socket socket;
         private static int playerID;
@@ -115,8 +113,6 @@
             waitTimer.start();
 
     }
-
-
         private void createSprites() {
             if (playerID == 1) {
                 me = new PlayerSprite(100, 350, 50, Color.BLUE, "Blueberry");
