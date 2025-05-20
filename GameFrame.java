@@ -99,9 +99,23 @@
             countdown = new GameCountdown();
             turbo = new Turbo();
             kingdom = new Kingdom();
-            gc = new GameCanvas();
+            gc = new GameCanvas(this);
             me = new PlayerSprite(100, 400, 50, Color.BLUE, "Blueberry");
             enemy = new PlayerSprite(100, 500, 50, Color.RED, "Strawberry");
+        }
+
+        public void setEngineType(String engineType){
+            this.engineType = new EngineType(engineType);
+        }
+
+        public void setBrakeType(String brakeType){
+            this.brakeType = new BrakeType(brakeType);
+        }
+
+        public void setTurbo(boolean b){
+            if (b){
+                turbo.addedTubroAcceleration();
+            }
         }
 
         /**

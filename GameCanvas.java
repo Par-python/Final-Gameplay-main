@@ -42,10 +42,13 @@ public class GameCanvas extends JComponent {
     private String brakePass;
     private boolean addOnPass;
 
+    private GameFrame frame;
+
     /**
      * Initializes the game canvas with all necessary components and audio.
      */
-    public GameCanvas() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public GameCanvas(GameFrame f) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        frame = f;
         setPreferredSize(new Dimension(1024, 768));
         setLayout(null);
 
@@ -190,6 +193,10 @@ public class GameCanvas extends JComponent {
             enginePass = chooseEngine.getEngineType();
             brakePass = brakes.getType();
             addOnPass = addon.isAddonPicked();
+            frame.setEngineType(enginePass);
+            frame.setBrakeType(brakePass);
+            frame.setTurbo(addOnPass);
+
         }
     }
     });
