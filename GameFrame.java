@@ -34,8 +34,8 @@
         // gameplay(Local)
         private int width, height;
         private Container contentPane;
-        private PlayerSprite me;
-        private PlayerSprite enemy;
+        private Player me;
+        private Player enemy;
         private DrawingComponent dc;
         private Timer animationTimer;
         private boolean gas, brake, shiftU, shiftD;
@@ -100,8 +100,8 @@
             turbo = new Turbo();
             kingdom = new Kingdom();
             gc = new GameCanvas(this);
-            me = new PlayerSprite(100, 400, 50, Color.BLUE, "Blueberry");
-            enemy = new PlayerSprite(100, 500, 50, Color.RED, "Strawberry");
+            me = new Player(100, 400, 50, Color.BLUE, "Blueberry");
+            enemy = new Player(100, 500, 50, Color.RED, "Strawberry");
         }
 
         public void setEngineType(String engineType){
@@ -160,12 +160,12 @@
 
         private void createSprites() {
             if (playerID == 1) {
-                me = new PlayerSprite(100, 350, 50, Color.BLUE, "Blueberry");
+                me = new Player(100, 350, 50, Color.BLUE, "Blueberry");
                 kingdom.changeKingdomType("Blueberry");
-                enemy = new PlayerSprite(100, 450, 50, Color.RED, "Strawberry");
+                enemy = new Player(100, 450, 50, Color.RED, "Strawberry");
             } else {
-                enemy = new PlayerSprite(100, 350, 50, Color.BLUE, "BlueBerry");
-                me = new PlayerSprite(100, 450, 50, Color.RED, "Strawberry");
+                enemy = new Player(100, 350, 50, Color.BLUE, "BlueBerry");
+                me = new Player(100, 450, 50, Color.RED, "Strawberry");
                 kingdom.changeKingdomType("Strawberry");
             }
         }
@@ -201,6 +201,8 @@
                         speed = 0;
                         isNotNearEnd = false;
                     }
+
+                    
 
                     if(turbo.isTurboActive()){
                         engineType.tubroIsActivated();

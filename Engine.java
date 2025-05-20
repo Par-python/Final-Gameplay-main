@@ -26,7 +26,7 @@ import javax.swing.*;
 public class Engine extends JComponent {
     // Constants for types
     public static final String SHORTCAKE = "Shortcake Core";
-    public static final String CHOCO = "ChocolocateOverload Core";
+    public static final String CHOCO = "ChocolateOverload Core";
     public static final String MATCHA = "Matcha Core";
 
     private Image defaultImage;

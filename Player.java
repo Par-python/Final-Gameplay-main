@@ -23,7 +23,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-public class PlayerSprite{
+public class Player{
 
         private double x, y, size;
         private Color color;
@@ -40,7 +40,7 @@ public class PlayerSprite{
          * @param c the color of the sprite
          * @param k the kingdom name
          */
-        public PlayerSprite(double a, double b, double s, Color c, String k){
+        public Player(double a, double b, double s, Color c, String k){
             x = a;
             y = b;
             size = s;
