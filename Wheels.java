@@ -1,3 +1,22 @@
+/**
+ * The Wheels class manages the wheel selection interface for the game.
+ * It handles the selection between different wheel types and their associated handling characteristics.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -22,15 +41,16 @@ public class Wheels extends JComponent {
     private Clip clip4;
     private Clip clip5;
 
-
-
     private String selectedWheelsType = null;
-
 
     private final Rectangle hoverArea1 = new Rectangle(249, 211, 230, 446); // Slicks
     private final Rectangle hoverArea2 = new Rectangle(546, 211, 230, 446); // Wets
     private final Rectangle hoverArea3 = new Rectangle(53,51,65,65);
     private int lastHovered = 0;
+
+    /**
+     * Initializes the wheel selection screen with images, sounds, and mouse listeners.
+     */
     public Wheels() {
         defaultImage = new ImageIcon("./assets/Wheels.png").getImage();
         hoverImage1 = new ImageIcon("./assets/slicks.png").getImage();
@@ -54,7 +74,6 @@ public class Wheels extends JComponent {
            System.err.println("Failed to load or play hover.wav");
        }
 
-
        // Click sound
        try {
            File music3 = new File("./assets/click.wav");
@@ -66,9 +85,6 @@ public class Wheels extends JComponent {
            System.err.println("Failed to load or play click.wav");
        }
 
-
-
-
        try {
            File music4 = new File("./assets/back.wav");
            AudioInputStream audioStream4 = AudioSystem.getAudioInputStream(music4);
@@ -79,7 +95,6 @@ public class Wheels extends JComponent {
            System.err.println("Failed to load or play back.wav");
        }
 
-
        try {
            File music5 = new File("./assets/chooseWheels.wav");
            AudioInputStream audioStream5 = AudioSystem.getAudioInputStream(music5);
@@ -89,7 +104,6 @@ public class Wheels extends JComponent {
             ex.printStackTrace();
             System.err.println("Failed to load or play chooseWheels.wav");
         }
-
 
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -159,26 +173,54 @@ public class Wheels extends JComponent {
         });
     }
 
+    /**
+     * Returns the currently selected wheel type.
+     * 
+     * @return the selected wheel type
+     */
     public String getType() {
         return selectedWheelsType;
     }
 
+    /**
+     * Checks if the Slicks wheels have been selected.
+     * 
+     * @return true if Slicks wheels were picked
+     */
     public boolean isSlicksPicked(){
         return slicksPicked;
     }
 
+    /**
+     * Checks if the Wets wheels have been selected.
+     * 
+     * @return true if Wets wheels were picked
+     */
     public boolean isWetsPicked(){
         return wetsPicked;
     }
 
+    /**
+     * Checks if the back button has been clicked.
+     * 
+     * @return true if back button was clicked
+     */
     public boolean isBackPicked(){
         return backPicked;
     }
 
+    /**
+     * Updates the selected wheel type.
+     * 
+     * @param x the wheel type to set as selected
+     */
     public void changeWheelType(String x){
         selectedWheelsType = x;
     }
 
+    /**
+     * Resets the wheel selection state to default values.
+     */
     public void nullify(){
         selectedWheelsType = null;
         slicksPicked = false;
@@ -186,6 +228,9 @@ public class Wheels extends JComponent {
         currentImage = defaultImage;
     }
 
+    /**
+     * Plays the wheel selection sound effect.
+     */
     public void playSound(){
         if (clip5!=null){
             clip5.setFramePosition(0);
@@ -194,6 +239,11 @@ public class Wheels extends JComponent {
         }
     }
   
+    /**
+     * Renders the current wheel selection screen image.
+     * 
+     * @param g the Graphics context to render on
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

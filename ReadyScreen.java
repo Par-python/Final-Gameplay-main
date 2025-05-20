@@ -1,3 +1,22 @@
+/**
+ * The ReadyScreen class manages the player ready-up interface before the game starts.
+ * It handles player readiness states, visual feedback, and sound effects for both kingdoms.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -29,6 +48,11 @@ public class ReadyScreen extends JComponent {
     private final Rectangle readyArea = new Rectangle(323, 487, 404, 114);
     private final Rectangle exitArea = new Rectangle(53, 51, 65, 65);
 
+    /**
+     * Initializes the ready screen with images, sounds, and mouse listeners.
+     * 
+     * @param kingdom the Kingdom object to determine which kingdom's assets to use
+     */
     public ReadyScreen(Kingdom kingdom) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         this.kingdom = kingdom;
         blueberryWait = new ImageIcon("./assets/waitBlueberry.png").getImage();
@@ -241,18 +265,36 @@ public class ReadyScreen extends JComponent {
         });
     }
 
+    /**
+     * Checks if the Blueberry player is ready.
+     * 
+     * @return true if Blueberry player is ready
+     */
     public boolean isBlueBerryReady() {
         return blueberry_Ready;
     }
 
+    /**
+     * Checks if the Strawberry player is ready.
+     * 
+     * @return true if Strawberry player is ready
+     */
     public boolean isStrawberryReady() {
         return strawberry_Ready;
     }
 
+    /**
+     * Checks if the back button has been clicked.
+     * 
+     * @return true if the back button was clicked
+     */
     public boolean isBackPicked() {
         return backPicked;
     }
 
+    /**
+     * Resets the ready screen state to default values.
+     */
     public void nullify() {
         blueberry_Ready = false;
         strawberry_Ready = false;
@@ -266,10 +308,18 @@ public class ReadyScreen extends JComponent {
         }
     
 
+    /**
+     * Updates the back button selection state.
+     * 
+     * @param x the boolean value to set for backPicked
+     */
     public void changebackPicked(boolean x){
         backPicked = x;
     }
 
+    /**
+     * Plays the ready screen sound effect.
+     */
     public void playSound(){
         if (clip6!=null){
             clip6.setFramePosition(0);

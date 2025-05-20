@@ -1,3 +1,22 @@
+/**
+ * The IntroBackground class manages the game's introduction screen interface.
+ * It handles user interactions, hover effects, and sound feedback for the start screen.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -20,6 +39,9 @@ public class IntroBackground extends JComponent {
     private final Rectangle hoverArea1 = new Rectangle(309,451,407,145);  // Strawberry
     private int lastHovered = 0;
     
+    /**
+     * Initializes the introduction screen with images, sounds, and mouse listeners.
+     */
     public IntroBackground() {
         hoverImage1 = new ImageIcon("./assets/first.png").getImage();
         hoverImage2 = new ImageIcon("./assets/second.png").getImage();
@@ -96,11 +118,19 @@ public class IntroBackground extends JComponent {
     }
 
 
+    /**
+     * Checks if the play button has been clicked.
+     * 
+     * @return true if the play button was clicked
+     */
     public boolean playPicked(){
         return playPicked;
     }
 
 
+    /**
+     * Plays the welcome sound effect.
+     */
     public void playSound(){
         if (clip4!=null){
             clip4.setFramePosition(0);

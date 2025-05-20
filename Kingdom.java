@@ -1,3 +1,22 @@
+/**
+ * The Kingdom class manages the kingdom selection interface for the game.
+ * It handles the selection between Strawberry and Blueberry kingdoms with visual feedback and sound effects.
+ * 
+ * @author Lance Arnel G. Camacho (245288)
+ * @author Jerome John C. Pardo (246268)
+ * @version 20 May 2025
+ * 
+ * I have not discussed the Java language code in my program
+ * with anyone other than my instructor or the teaching assistants
+ * assigned to this course.
+ * 
+ * I have not used Java language code obtained from another student,
+ * or any other unauthorized source, either modified or unmodified.
+ * If any Java language code or documentation used in my program
+ * was obtained from another source, such as a textbook or website,
+ * that has been clearly noted with a proper citation in the comments
+ * of my program.
+ */
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -26,6 +45,9 @@ public class Kingdom extends JComponent {
     private final Rectangle hoverArea2 = new Rectangle(76, 247, 418, 373);   // Blueberry
     private int lastHovered = 0;
 
+    /**
+     * Initializes the kingdom selection screen with images, sounds, and mouse listeners.
+     */
     public Kingdom() {
         defaultImage = new ImageIcon("./assets/chooseKingdom.png").getImage();
         hoverImage1 = new ImageIcon("./assets/strawberryhover.png").getImage();
@@ -127,27 +149,53 @@ public class Kingdom extends JComponent {
         });
     }
 
+    /**
+     * Returns the currently selected kingdom type.
+     * 
+     * @return the currently selected kingdom type
+     */
     public String getType() {
         return selectedKingdomType;
     }
 
+    /**
+     * Updates the currently selected kingdom type.
+     * 
+     * @param x the kingdom type to set as selected
+     */
     public void changeKingdomType(String x){
         selectedKingdomType = x;
     }
+    /**
+     * Checks if the Strawberry kingdom has been selected.
+     * 
+     * @return true if Strawberry kingdom was picked
+     */
     public boolean isStrawberryPicked(){
         return strawberryPicked;
     }
 
+    /**
+     * Checks if the Blueberry kingdom has been selected.
+     * 
+     * @return true if Blueberry kingdom was picked
+     */
     public boolean isBlueberryPicked(){
         return blueberryPicked;
     }
 
+    /**
+     * Plays the kingdom selection sound effect.
+     */
     public void playSound(){
         if (clip5!=null){
             clip5.setFramePosition(0);
             clip5.start();
         } 
     }
+    /**
+     * Renders the current kingdom selection screen image.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
