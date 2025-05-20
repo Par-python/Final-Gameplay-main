@@ -16,6 +16,7 @@ public class GameCanvas extends JComponent {
     private Brakes brakes;
     private Addon addon;
     private ReadyScreen readyScreen;
+    private boolean onReady;
 
     public GameCanvas() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         setPreferredSize(new Dimension(1024, 768));
@@ -32,6 +33,8 @@ public class GameCanvas extends JComponent {
         wheels = new Wheels();
         brakes = new Brakes();
         addon = new Addon();
+
+        onReady = false;
 
         readyScreen = new ReadyScreen(chooseKingdom);  
     }
@@ -149,18 +152,16 @@ public class GameCanvas extends JComponent {
         if (readyScreen.isBlueBerryReady() || readyScreen.isStrawberryReady()) {
             remove(readyScreen);
             repaint();
-            if (onReady != null) onReady.run(); 
+            onReady = true;
         }
     }
 });
 
-
-        clip1.close();
+    clip1.close();
     }
 
-    private Runnable onReady;
-    public void setOnReady(Runnable onReady) {
-    this.onReady = onReady;
-}
+    public boolean setOnReady(){
+        return onReady;
+    }
 
 }
