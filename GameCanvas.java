@@ -110,6 +110,7 @@ public class GameCanvas extends JComponent {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (chooseEngine.isShortcakePicked() || chooseEngine.isChocoPicked() || chooseEngine.isMatchaPicked()) {
+                    frame.setEngineType(chooseEngine.getEngineType());
                     remove(chooseEngine);
                     chooseEngine.nullify();
                     add(wheels);
@@ -193,9 +194,9 @@ public class GameCanvas extends JComponent {
             enginePass = chooseEngine.getEngineType();
             brakePass = brakes.getType();
             addOnPass = addon.isAddonPicked();
-            frame.setEngineType(enginePass);
-            frame.setBrakeType(brakePass);
-            frame.setTurbo(addOnPass);
+
+            frame.setBrakeType(brakes.getType());
+            frame.setTurbo(addon.isAddonPicked());
 
         }
     }
