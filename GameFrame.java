@@ -202,8 +202,6 @@
                         isNotNearEnd = false;
                     }
 
-                    
-
                     if(turbo.isTurboActive()){
                         engineType.tubroIsActivated();
                     }
